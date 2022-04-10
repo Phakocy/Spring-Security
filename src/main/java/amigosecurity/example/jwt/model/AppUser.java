@@ -11,11 +11,11 @@ import java.util.Collection;
 @Entity
 public class AppUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String username;
     private String password;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Collection<Role> roles = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.EAGER)//Eager because everytime you load a user you want to load the roles with it
+    private Collection<Role>  roles = new ArrayList<>();
 }

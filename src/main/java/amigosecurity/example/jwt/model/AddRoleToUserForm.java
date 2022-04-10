@@ -1,4 +1,4 @@
-package amigosecurity.example.jwt.controller;
+package amigosecurity.example.jwt.model;
 
 import lombok.Data;
 
