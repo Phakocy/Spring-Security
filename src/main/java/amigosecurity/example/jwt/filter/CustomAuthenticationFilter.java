@@ -18,7 +18,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -47,7 +46,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         String password = request.getParameter("password");
         log.info("Username is : {}", username);
         log.info("Password is : {}", password);
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password, new ArrayList<>());
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
 
         return authenticationManager.authenticate(authenticationToken);
         //If you want to pass in the username and password as a json object, use Model mapper like the one in UserMicroservice Sergey kalpogorov
@@ -72,7 +71,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
                 .sign(algorithm);
 
        /* response.setHeader("accessToken", accessToken);
-        response.setHeader("refreshToken", refreshToken);*/
+        response.setHeader("refreshToken", refreshToken);*/     //The result will be displayed in the header
 
         //OR To output the tokens and not put them in the header
         Map<String,String> tokens = new HashMap<>();
